@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 import cn.studyjams.s2.sj0131.Constants;
-import cn.studyjams.s2.sj0131.MyApplication;
+import cn.studyjams.s2.sj0131.common.CommonApplication;
 import cn.studyjams.s2.sj0131.common.utils.Logger;
 import cn.studyjams.s2.sj0131.common.utils.NetworkUtil;
 import okhttp3.Cache;
@@ -103,7 +103,7 @@ public class ServiceFactory {
         httpClientBuilder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         //设置缓存
-        MyApplication instance = MyApplication.getInstance();
+        CommonApplication instance = CommonApplication.getInstance();
         File cacheDir = instance.getCacheDir();
         File httpCacheDirectory = new File(cacheDir, "OkHttpCache");
         httpClientBuilder.cache(new Cache(httpCacheDirectory, 10 * 1024 * 1024));//缓存大小10M
@@ -132,7 +132,7 @@ public class ServiceFactory {
 
             Response response = chain.proceed(request);
 
-            if (NetworkUtil.isConnected(MyApplication.getInstance())) {
+            if (NetworkUtil.isConnected(CommonApplication.getInstance())) {
                 int maxAge = 0; // read from network
                 response.newBuilder()
                         .removeHeader("Pragma")

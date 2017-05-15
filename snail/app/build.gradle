@@ -29,6 +29,10 @@ dependencies {
     compile rootProject.ext.dependencies["gson"]
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["constraint-layout"]
-    compile rootProject.ext.dependencies["appcompat-v7"]
+    //tools
+    provided rootProject.ext.dependencies["javax.annotation"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    //view
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     compile project(':common')
 }

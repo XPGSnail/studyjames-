@@ -31,12 +31,15 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInitView = initView();
         mUnbinder = ButterKnife.bind(this, mInitView);
+        setComponent();
         mPresenter = setPresenter();
         if (mPresenter != null) {
             mPresenter.onStart();
         }
         return mInitView;
     }
+
+    protected abstract void setComponent();
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
