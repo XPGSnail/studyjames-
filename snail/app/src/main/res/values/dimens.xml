@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dip16">16dp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+</resources>

@@ -1,9 +1,13 @@
 package cn.studyjams.s2.sj0131.snail.mvp.ui;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import cn.studyjams.s2.sj0131.common.base.BaseFragment;
+import cn.studyjams.s2.sj0131.snail.R;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerMeiZiComponent;
 import cn.studyjams.s2.sj0131.snail.di.component.MainComponent;
 import cn.studyjams.s2.sj0131.snail.di.module.MeiZiModule;
@@ -29,8 +33,9 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
 
 
     @Override
-    protected View initView() {
-        return null;
+    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_meizi, container, false);
+        return view;
     }
 
     @Override

@@ -32,7 +32,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mInitView = initView();
+        mInitView = initView(inflater,container,savedInstanceState);
         mUnbinder = ButterKnife.bind(this, mInitView);
         setComponent();
         return mInitView;
@@ -82,8 +82,11 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
      * 初始化Fragment的根节点
      *
      * @return view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
      */
-    protected abstract View initView();
+    protected abstract View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
     /**
      * 初始化fragment的数据源
