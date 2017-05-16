@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 
 import cn.studyjams.s2.sj0131.common.CommonApplication;
+import cn.studyjams.s2.sj0131.common.Constants;
 import cn.studyjams.s2.sj0131.common.api.interceptor.CacheControlInterceptor;
 import cn.studyjams.s2.sj0131.common.api.interceptor.LoggingInterceptor;
 import dagger.Module;
@@ -61,9 +62,12 @@ public class NetModule {
         return new Cache(httpCacheDirectory, cacheSize);
     }
 
-    protected Retrofit provideGankRetrofit(OkHttpClient okHttpClient, Gson gson, String url) {
+
+    @Singleton
+    @Provides
+    Retrofit provideGankRetrofit(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(Constants.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

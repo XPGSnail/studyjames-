@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import org.greenrobot.eventbus.EventBus;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.studyjams.s2.sj0131.common.mvp.BasePresenter;
@@ -22,6 +24,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     protected final String TAG = this.getClass().getSimpleName();
     private View mInitView;
     private Unbinder mUnbinder;
+    @Inject
     protected P mPresenter;
     private Context mContext;
 
@@ -32,10 +35,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         mInitView = initView();
         mUnbinder = ButterKnife.bind(this, mInitView);
         setComponent();
-        mPresenter = setPresenter();
-        if (mPresenter != null) {
-            mPresenter.onStart();
-        }
         return mInitView;
     }
 
@@ -50,11 +49,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         }
         initData();
     }
-
-    /**
-     * 注入的presenter对象
-     */
-    protected abstract P setPresenter();
 
     /**
      * 是否使用eventBus,默认为不使用(false)，

@@ -3,6 +3,8 @@ package cn.studyjams.s2.sj0131.snail.mvp.ui;
 import android.content.Intent;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import cn.studyjams.s2.sj0131.common.base.BaseFragment;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerAndroidComponent;
 import cn.studyjams.s2.sj0131.snail.di.component.MainComponent;
@@ -15,6 +17,10 @@ import cn.studyjams.s2.sj0131.snail.mvp.presenter.AndroidPresenter;
  */
 
 public class AndroidFragment extends BaseFragment<AndroidPresenter> implements AndroidContract.View{
+
+    @Inject
+    AndroidPresenter mPresenter;
+
     @Override
     protected void setComponent() {
         MainActivity activity = (MainActivity) getActivity();
@@ -23,11 +29,6 @@ public class AndroidFragment extends BaseFragment<AndroidPresenter> implements A
                 .mainComponent(mainComponent)
                 .androidModule(new AndroidModule(this))
                 .build().inject(this);
-    }
-
-    @Override
-    protected AndroidPresenter setPresenter() {
-        return null;
     }
 
     @Override

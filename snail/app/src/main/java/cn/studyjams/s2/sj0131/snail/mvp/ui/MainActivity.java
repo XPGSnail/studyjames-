@@ -21,10 +21,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setComponent();
+
+    }
+
+    private void setComponent() {
         mMainComponent = DaggerMainComponent.builder()
                 .appComponent(CommonApplication.getInstance().getmAppComponent())
                 .serviceModule(new ServiceModule())
                 .build();
-
     }
 }

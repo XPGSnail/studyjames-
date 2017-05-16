@@ -27,11 +27,6 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
                 .build().inject(this);
     }
 
-    @Override
-    protected MeiZiPresenter setPresenter() {
-        return null;
-    }
-
 
     @Override
     protected View initView() {

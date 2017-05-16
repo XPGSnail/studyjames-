@@ -13,4 +13,6 @@ import dagger.Component;
 public interface MeiZiComponent {
 
     void inject(MeiZiFragment meiZiFragment);
+
+
 }
