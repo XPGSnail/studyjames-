@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.studyjams.s2.sj0131.common.base.BaseFragment;
 import cn.studyjams.s2.sj0131.snail.R;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerAndroidComponent;
@@ -79,18 +77,5 @@ public class AndroidFragment extends BaseFragment<AndroidPresenter> implements A
     public void killMyself() {
 
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+    
 }

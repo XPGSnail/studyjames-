@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.studyjams.s2.sj0131.common.base.BaseFragment;
 import cn.studyjams.s2.sj0131.snail.R;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerMeiZiComponent;
@@ -78,17 +76,4 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }
