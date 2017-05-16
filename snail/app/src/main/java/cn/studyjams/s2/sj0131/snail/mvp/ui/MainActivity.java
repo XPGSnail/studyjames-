@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initFragment();
         initView();
         initListener();
-        addFragment(mFragmentManager,mAndroidFragment,"android");
+        addFragment(mAndroidFragment);
     }
 
     private void initFragment() {
@@ -105,23 +105,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.item_android:
                 Snackbar.make(mFab, "android 新闻查看", Snackbar.LENGTH_SHORT)
                         .setAction("1", null).show();
+                addFragment(mAndroidFragment);
+                hideFragment(mMeiZiFragment);
                 break;
             case R.id.item_meizi:
                 Snackbar.make(mFab, "meizi 福利？", Snackbar.LENGTH_SHORT)
                         .setAction("2", null).show();
+                addFragment(mMeiZiFragment);
+                hideFragment(mAndroidFragment);
                 break;
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void addFragment(FragmentManager fragmentManager,Fragment fragment,String tag) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragmentByTag = fragmentManager.findFragmentByTag(tag);
-        if (fragmentByTag == null) {
-            fragmentTransaction.add(R.id.fl_container, fragment, tag);
+    private void addFragment(Fragment fragment) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (!fragment.isAdded()) {
+            ft.add(R.id.fl_container, fragment).commit();
         } else {
-            fragmentTransaction.show(fragmentByTag);
+            ft.show(fragment).commit();
         }
     }
+
+    private void hideFragment(Fragment fragment) {
+        if (fragment.isAdded()) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.hide(fragment).commit();
+        }
+    }
+
 }

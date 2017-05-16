@@ -26,4 +26,8 @@ public class MeiZiPresenter extends BasePresenter<MeiZiModel, MeiZiContract.View
     }
 
 
+    public void getMeiZiDatas() {
+
+
+    }
 }

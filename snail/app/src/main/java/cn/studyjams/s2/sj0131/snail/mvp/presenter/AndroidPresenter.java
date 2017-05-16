@@ -26,4 +26,7 @@ public class AndroidPresenter extends BasePresenter<AndroidModel, AndroidContrac
     }
 
 
+    public void getAndroidDatas() {
+
+    }
 }
