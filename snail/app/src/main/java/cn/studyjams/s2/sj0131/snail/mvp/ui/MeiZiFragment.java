@@ -2,10 +2,13 @@ package cn.studyjams.s2.sj0131.snail.mvp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.BindView;
 import cn.studyjams.s2.sj0131.common.base.BaseFragment;
 import cn.studyjams.s2.sj0131.snail.R;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerMeiZiComponent;
@@ -20,6 +23,11 @@ import cn.studyjams.s2.sj0131.snail.mvp.presenter.MeiZiPresenter;
 
 public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZiContract.View {
 
+
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void setComponent() {
@@ -40,7 +48,7 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
 
     @Override
     protected void initData() {
-
+        mPresenter.getMeiZiDatas();
     }
 
     @Override
@@ -67,4 +75,5 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
     public void killMyself() {
 
     }
+
 }
