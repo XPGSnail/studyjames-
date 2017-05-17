@@ -48,5 +48,9 @@ dependencies {
     compile(rootProject.ext.dependencies["dagger2"])
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     provided rootProject.ext.dependencies["javax.annotation"]
+    //butterknife
+    compile (rootProject.ext.dependencies["butterknife"]){
+        exclude module: 'support-annotations'
+    }
 
 }
