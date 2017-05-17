@@ -2,7 +2,7 @@ package cn.studyjams.s2.sj0131.snail.di.component;
 
 import cn.studyjams.s2.sj0131.common.di.scope.FragmentScope;
 import cn.studyjams.s2.sj0131.snail.di.module.MeiZiModule;
-import cn.studyjams.s2.sj0131.snail.mvp.ui.MeiZiFragment;
+import cn.studyjams.s2.sj0131.snail.mvp.ui.fragment.MeiZiFragment;
 import dagger.Component;
 
 /**

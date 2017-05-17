@@ -3,4 +3,7 @@
     <dimen name="dip16">16dp</dimen>
     <dimen name="sp16">16sp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="dip60">60dp</dimen>
+    <dimen name="dip14">14dp</dimen>
+    <dimen name="dip5">5dp</dimen>
 </resources>

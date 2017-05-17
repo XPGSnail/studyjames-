@@ -1,5 +1,7 @@
 package cn.studyjams.s2.sj0131.snail.mvp.model;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import cn.studyjams.s2.sj0131.common.api.HttpResult;
@@ -25,7 +27,7 @@ public class AndroidModel extends BaseModel implements AndroidContract.Model {
 
 
     @Override
-    public Observable<HttpResult<Android>> getAndroidObservable(int page) {
+    public Observable<HttpResult<ArrayList<Android>>> getAndroidObservable(int page) {
         return mCommonService.getAndroid(page);
     }
 }

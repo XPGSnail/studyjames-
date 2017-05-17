@@ -1,4 +1,4 @@
-package cn.studyjams.s2.sj0131.snail.mvp.ui;
+package cn.studyjams.s2.sj0131.snail.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +23,8 @@ import cn.studyjams.s2.sj0131.snail.R;
 import cn.studyjams.s2.sj0131.snail.di.component.DaggerMainComponent;
 import cn.studyjams.s2.sj0131.snail.di.component.MainComponent;
 import cn.studyjams.s2.sj0131.snail.di.module.ServiceModule;
+import cn.studyjams.s2.sj0131.snail.mvp.ui.fragment.AndroidFragment;
+import cn.studyjams.s2.sj0131.snail.mvp.ui.fragment.MeiZiFragment;
 
 import static cn.studyjams.s2.sj0131.snail.R.id.navigationView;
 
@@ -106,13 +108,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(mFab, "android 新闻查看", Snackbar.LENGTH_SHORT)
                         .setAction("1", null).show();
                 addFragment(mAndroidFragment);
-                hideFragment(mMeiZiFragment);
                 break;
             case R.id.item_meizi:
                 Snackbar.make(mFab, "meizi 福利？", Snackbar.LENGTH_SHORT)
                         .setAction("2", null).show();
                 addFragment(mMeiZiFragment);
-                hideFragment(mAndroidFragment);
                 break;
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -121,18 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void addFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (!fragment.isAdded()) {
-            ft.add(R.id.fl_container, fragment).commit();
-        } else {
-            ft.show(fragment).commit();
-        }
-    }
-
-    private void hideFragment(Fragment fragment) {
-        if (fragment.isAdded()) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.hide(fragment).commit();
-        }
+            ft.replace(R.id.fl_container, fragment).commit();
     }
 
 }

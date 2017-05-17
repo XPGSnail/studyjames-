@@ -2,7 +2,7 @@ package cn.studyjams.s2.sj0131.snail.di.component;
 
 import cn.studyjams.s2.sj0131.common.di.scope.FragmentScope;
 import cn.studyjams.s2.sj0131.snail.di.module.AndroidModule;
-import cn.studyjams.s2.sj0131.snail.mvp.ui.AndroidFragment;
+import cn.studyjams.s2.sj0131.snail.mvp.ui.fragment.AndroidFragment;
 import dagger.Component;
 
 /**

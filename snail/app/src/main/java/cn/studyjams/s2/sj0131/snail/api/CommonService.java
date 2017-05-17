@@ -1,5 +1,7 @@
 package cn.studyjams.s2.sj0131.snail.api;
 
+import java.util.ArrayList;
+
 import cn.studyjams.s2.sj0131.common.api.HttpResult;
 import cn.studyjams.s2.sj0131.snail.entity.Android;
 import cn.studyjams.s2.sj0131.snail.entity.MeiZi;
@@ -13,9 +15,9 @@ import retrofit2.http.Path;
 public interface CommonService {
 
     @GET("data/福利/20/{page}")
-    Observable<HttpResult<MeiZi>> getMeizi(@Path("page") int page);
+    Observable<HttpResult<ArrayList<MeiZi>>> getMeizi(@Path("page") int page);
 
 
     @GET("data/Android/10/{page}")
-    Observable<HttpResult<Android>> getAndroid(@Path("page") int page);
+    Observable<HttpResult<ArrayList<Android>>> getAndroid(@Path("page") int page);
 }

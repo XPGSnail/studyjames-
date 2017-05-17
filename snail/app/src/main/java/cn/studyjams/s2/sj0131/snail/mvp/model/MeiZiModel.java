@@ -1,5 +1,7 @@
 package cn.studyjams.s2.sj0131.snail.mvp.model;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import cn.studyjams.s2.sj0131.common.api.HttpResult;
@@ -25,7 +27,7 @@ public class MeiZiModel extends BaseModel implements MeiZiContract.Model {
 
 
     @Override
-    public Observable<HttpResult<MeiZi>> getMeiziObservable(int page) {
+    public Observable<HttpResult<ArrayList<MeiZi>>> getMeiziObservable(int page) {
         return mCommonService.getMeizi(page);
     }
 }

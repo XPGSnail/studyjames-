@@ -5,5 +5,6 @@ package cn.studyjams.s2.sj0131;
  */
 
 public class Constants {
-    public static String BASE_ROOT_URL = "http://gank.io/api/";
+    public static final int FLAG_REFRESH = 1;
+    public static final int FLAG_LOAD_MORE = 2;
 }

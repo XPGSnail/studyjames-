@@ -28,29 +28,35 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["design"]
-    compile rootProject.ext.dependencies["constraint-layout"]
+    compile(rootProject.ext.dependencies["appcompat-v7"]) {
+        exclude module: 'support-annotations'
+    }
 
     //eventbus
     compile rootProject.ext.dependencies["eventbus"]
     //butterKnife
-    compile rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    compile(rootProject.ext.dependencies["butterknife"]) {
+        exclude module: 'support-annotations'
+    }
+    //gson
+    compile rootProject.ext.dependencies["gson"]
     //rx
     compile rootProject.ext.dependencies["rxjava"]
-    compile(rootProject.ext.dependencies["rxandroid"])
+    compile(rootProject.ext.dependencies["rxandroid"]) {
+        exclude module: 'rxjava'
+    }
     //retrofit
-    compile(rootProject.ext.dependencies["retrofit"])
-    compile(rootProject.ext.dependencies["retrofit-converter-gson"])
+    compile(rootProject.ext.dependencies["retrofit"]) {
+        exclude module: 'okhttp'
+    }
+    compile(rootProject.ext.dependencies["retrofit-converter-gson"]) {
+        exclude module: 'gson'
+    }
     compile(rootProject.ext.dependencies["retrofit-adapter-rxjava2"])
     //dagger2
     compile(rootProject.ext.dependencies["dagger2"])
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     provided rootProject.ext.dependencies["javax.annotation"]
-    //butterknife
-    compile (rootProject.ext.dependencies["butterknife"]){
-        exclude module: 'support-annotations'
-    }
 
 }
