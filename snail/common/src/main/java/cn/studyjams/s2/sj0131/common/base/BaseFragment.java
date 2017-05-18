@@ -32,7 +32,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mInitView = initView(inflater,container,savedInstanceState);
+        mInitView = initView(inflater, container, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, mInitView);
         setComponent();
         return mInitView;
@@ -59,6 +59,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         return false;
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -81,10 +82,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     /**
      * 初始化Fragment的根节点
      *
-     * @return view
      * @param inflater
      * @param container
      * @param savedInstanceState
+     * @return view
      */
     protected abstract View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
@@ -102,7 +103,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
      * 还没执行,setData里调用presenter的方法时,是会报空的,因为dagger注入是在onActivityCreated
      * 方法中执行的,如果要做一些初始化操作,可以不必让外部调setData,在内部onActivityCreated中
      * 初始化就可以了
-     *
+     * <p>
      * 这里也可以写成泛型方法,在使用fragment时候再去指定泛型参数
      *
      * @param data 传入的数据源

@@ -23,6 +23,8 @@ public interface MeiZiContract {
         void hideLoadingMore(boolean b);
 
         void showLoadingMore();
+
+        void initDatas(ArrayList<MeiZi> datas);
     }
 
     interface Model extends IModel {

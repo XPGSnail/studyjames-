@@ -3,8 +3,8 @@ package cn.studyjams.s2.sj0131.snail.mvp.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +64,7 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
     @Override
     protected void initData() {
         initRecyclerView();
-        mPresenter.getMeiZiDatas(mPage, Constants.FLAG_REFRESH);
+        mPresenter.getMeiZiDatas(mPage, Constants.FLAG_INIT);
         initListener();
     }
 
@@ -73,15 +73,23 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
         mMeiZiAdapter.setOnLoadMoreListener(this);
     }
 
+    @Override
+    public void initDatas(ArrayList<MeiZi> datas) {
+        mMeiZiAdapter.setNewData(datas);
+    }
+
     private void initRecyclerView() {
         mDatas = new ArrayList<>();
-        mMeiZiAdapter = new MeiZiAdapter(mDatas);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,
+                StaggeredGridLayoutManager.VERTICAL);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        layoutManager.setOrientation(GridLayoutManager.VERTICAL);
         DividerDecoration decoration = new DividerDecoration(10);
         mRecyclerView.addItemDecoration(decoration);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mMeiZiAdapter = new MeiZiAdapter(mDatas);
         mRecyclerView.setAdapter(mMeiZiAdapter);
+//        mMeiZiAdapter.disableLoadMoreIfNotFullPage();
     }
 
     @Override
