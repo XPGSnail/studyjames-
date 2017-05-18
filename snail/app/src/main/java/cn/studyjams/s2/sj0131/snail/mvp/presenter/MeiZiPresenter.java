@@ -63,6 +63,11 @@ public class MeiZiPresenter extends BasePresenter<MeiZiModel, MeiZiContract.View
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpResultSubscriber<ArrayList<MeiZi>>() {
                     @Override
+                    protected void addDisposable() {
+                        addSubscribe(mDisposable);
+                    }
+
+                    @Override
                     public void onSuccess(ArrayList<MeiZi> datas) {
                         dealData(datas, flagRefresh);
 
@@ -105,6 +110,7 @@ public class MeiZiPresenter extends BasePresenter<MeiZiModel, MeiZiContract.View
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         mDisposable = d;
+                        addSubscribe(d);
                     }
 
                     @Override

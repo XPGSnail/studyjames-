@@ -59,4 +59,5 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     provided rootProject.ext.dependencies["javax.annotation"]
 
+
 }

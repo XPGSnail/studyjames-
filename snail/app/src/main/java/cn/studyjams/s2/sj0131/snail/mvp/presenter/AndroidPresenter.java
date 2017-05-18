@@ -55,6 +55,11 @@ public class AndroidPresenter extends BasePresenter<AndroidModel, AndroidContrac
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpResultSubscriber<ArrayList<Android>>() {
                     @Override
+                    protected void addDisposable() {
+                        addSubscribe(mDisposable);
+                    }
+
+                    @Override
                     public void onSuccess(ArrayList<Android> datas) {
                         switch (flagRefresh) {
                             case Constants.FLAG_REFRESH:

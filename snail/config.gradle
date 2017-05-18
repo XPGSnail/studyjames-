@@ -29,7 +29,7 @@ ext {
             //recyclerview
             "recyclerview-v7"         : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
             //cardview
-            "cardview"               : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "cardview"                : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
             "constraint-layout"       : "com.android.support.constraint:constraint-layout:${version["constraintVersoin"]}",
 
             //network
@@ -46,6 +46,7 @@ ext {
             //rx
             "rxandroid"               : "io.reactivex.rxjava2:rxandroid:${version["rxandroidVersoin"]}",
             "rxjava"                  : "io.reactivex.rxjava2:rxjava:${version["rxjavaVersoin"]}",
+            //other
             "gson"                    : "com.google.code.gson:gson:2.8.0",
             "multidex"                : 'com.android.support:multidex:1.0.0',
             "eventbus"                : 'org.greenrobot:eventbus:3.0.0',
@@ -54,6 +55,6 @@ ext {
             "dagger2-compiler"        : "com.google.dagger:dagger-compiler:${version["dagger2SdkVersion"]}",
             "javax.annotation"        : 'javax.annotation:jsr250-api:1.0',
             //adapter-helper
-            "adapter-helper"        : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version["adapterhelperVersoin"]}",
+            "adapter-helper"          : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version["adapterhelperVersoin"]}",
     ]
 }

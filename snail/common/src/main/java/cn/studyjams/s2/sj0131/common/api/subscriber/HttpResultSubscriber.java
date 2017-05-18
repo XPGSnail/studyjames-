@@ -17,7 +17,10 @@ public abstract class HttpResultSubscriber<T> implements Observer<HttpResult<T>>
     @Override
     public void onSubscribe(Disposable d) {
         mDisposable = d;
+        addDisposable();
     }
+
+    protected abstract void addDisposable();
 
     @Override
     public void onComplete() {
