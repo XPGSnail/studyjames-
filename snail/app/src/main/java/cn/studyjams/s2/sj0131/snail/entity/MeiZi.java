@@ -1,10 +1,13 @@
 package cn.studyjams.s2.sj0131.snail.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by hasee on 2017/5/11.
  */
 
-public class MeiZi {
+public class MeiZi implements Parcelable {
 
     /**
      * _id : 5913d09d421aa90c7fefdd8e
@@ -117,4 +120,53 @@ public class MeiZi {
     public void setWho(String who) {
         this.who = who;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this._id);
+        dest.writeString(this.createdAt);
+        dest.writeString(this.desc);
+        dest.writeString(this.publishedAt);
+        dest.writeString(this.source);
+        dest.writeString(this.type);
+        dest.writeString(this.url);
+        dest.writeByte(this.used ? (byte) 1 : (byte) 0);
+        dest.writeString(this.who);
+        dest.writeFloat(this.width);
+        dest.writeFloat(this.height);
+    }
+
+    public MeiZi() {
+    }
+
+    protected MeiZi(Parcel in) {
+        this._id = in.readString();
+        this.createdAt = in.readString();
+        this.desc = in.readString();
+        this.publishedAt = in.readString();
+        this.source = in.readString();
+        this.type = in.readString();
+        this.url = in.readString();
+        this.used = in.readByte() != 0;
+        this.who = in.readString();
+        this.width = in.readFloat();
+        this.height = in.readFloat();
+    }
+
+    public static final Parcelable.Creator<MeiZi> CREATOR = new Parcelable.Creator<MeiZi>() {
+        @Override
+        public MeiZi createFromParcel(Parcel source) {
+            return new MeiZi(source);
+        }
+
+        @Override
+        public MeiZi[] newArray(int size) {
+            return new MeiZi[size];
+        }
+    };
 }

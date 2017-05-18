@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "542768822043",
+    "firebase_url": "https://snailnews-dd309.firebaseio.com",
+    "project_id": "snailnews-dd309",
+    "storage_bucket": "snailnews-dd309.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542768822043:android:3de9ebdf590f8c7c",
+        "android_client_info": {
+          "package_name": "cn.studyjams.s2.sj0131.snail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542768822043-vfh2rvctgu8dmvsv9657gbcihmgso741.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cn.studyjams.s2.sj0131.snail",
+            "certificate_hash": "76377f62994ce7ee114778594e54eb90b0460286"
+          }
+        },
+        {
+          "client_id": "542768822043-omat0jahb31718bobeu1ccmlddl549ou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI0LQeqrPzQdO5dgIKYy90NsnHoWcx2H4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542768822043-omat0jahb31718bobeu1ccmlddl549ou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

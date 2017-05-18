@@ -20,6 +20,8 @@ public class ImageLoader {
         Glide.with(context)
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .crossFade()
                 .into(imageView);
     }
 

@@ -4,13 +4,29 @@ android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     defaultConfig {
-        applicationId "cn.studyjams.s2.sj0131.snail"
+        applicationId rootProject.ext.android["applicationId"]
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        debug {
+            keyAlias rootProject.ext.key['keyAlias']
+            keyPassword rootProject.ext.key['password']
+            storeFile file(rootProject.ext.key['fileName'])
+            storePassword rootProject.ext.key['password']
+        }
+
+        release {
+            keyAlias rootProject.ext.key['keyAlias']
+            keyPassword rootProject.ext.key['password']
+            storeFile file(rootProject.ext.key['fileName'])
+            storePassword rootProject.ext.key['password']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,8 +40,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile (rootProject.ext.dependencies["appcompat-v7"]) {
+    compile(rootProject.ext.dependencies["appcompat-v7"]) {
         exclude module: 'support-annotations'
     }
     compile rootProject.ext.dependencies["constraint-layout"]
@@ -37,5 +52,12 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     //view
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    compile rootProject.ext.dependencies["photoView"]
+    compile rootProject.ext.dependencies["firebase-analytics"]
+    compile(rootProject.ext.dependencies["circleimageview"]) {
+        exclude module: 'support-annotations'
+    }
     compile project(':common')
+    testCompile rootProject.ext.dependencies["junit"]
 }
+apply plugin: 'com.google.gms.google-services'

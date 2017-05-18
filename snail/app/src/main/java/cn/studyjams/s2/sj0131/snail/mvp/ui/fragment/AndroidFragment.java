@@ -1,6 +1,7 @@
 package cn.studyjams.s2.sj0131.snail.mvp.ui.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,7 +35,7 @@ import cn.studyjams.s2.sj0131.snail.widget.DividerDecoration;
  * Created by hasee on 2017/5/11.
  */
 
-public class AndroidFragment extends BaseFragment<AndroidPresenter> implements AndroidContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class AndroidFragment extends BaseFragment<AndroidPresenter> implements AndroidContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
 
     @Inject
     AndroidPresenter mPresenter;
@@ -74,9 +75,11 @@ public class AndroidFragment extends BaseFragment<AndroidPresenter> implements A
     private void initListener() {
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mAdapter.setOnLoadMoreListener(this);
+        mAdapter.setOnItemClickListener(this);
     }
 
     private void initRecyclerView() {
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.pink, R.color.blue_grey);
         mDatas = new ArrayList<>();
         mAdapter = new AndroidAdapter(mDatas);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -163,4 +166,12 @@ public class AndroidFragment extends BaseFragment<AndroidPresenter> implements A
         }, 500);
     }
 
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        Android android = mAdapter.getData().get(position);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(android.getUrl()));
+        startActivity(intent);
+    }
 }

@@ -34,4 +34,5 @@ public class MeiZiAdapter extends BaseQuickAdapter<MeiZi, BaseViewHolder> {
         ImageLoader.loadImage(item.getUrl(),imageView,mContext);
     }
 
+
 }

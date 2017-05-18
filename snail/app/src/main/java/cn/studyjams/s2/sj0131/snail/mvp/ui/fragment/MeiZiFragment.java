@@ -2,6 +2,8 @@ package cn.studyjams.s2.sj0131.snail.mvp.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 
@@ -25,14 +28,16 @@ import cn.studyjams.s2.sj0131.snail.entity.MeiZi;
 import cn.studyjams.s2.sj0131.snail.mvp.contract.MeiZiContract;
 import cn.studyjams.s2.sj0131.snail.mvp.presenter.MeiZiPresenter;
 import cn.studyjams.s2.sj0131.snail.mvp.ui.activity.MainActivity;
+import cn.studyjams.s2.sj0131.snail.mvp.ui.activity.MeiziDetailActivity;
 import cn.studyjams.s2.sj0131.snail.mvp.ui.adapter.MeiZiAdapter;
 import cn.studyjams.s2.sj0131.snail.widget.DividerDecoration;
+import cn.studyjams.s2.sj0131.snail.widget.ScaleImageView;
 
 /**
  * Created by hasee on 2017/5/11.
  */
 
-public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZiContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZiContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
 
 
     @BindView(R.id.recyclerView)
@@ -47,6 +52,7 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
     @Override
     protected void setComponent() {
         MainActivity activity = (MainActivity) getActivity();
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.pink, R.color.blue_grey);
         MainComponent mainComponent = activity.getMainComponent();
         DaggerMeiZiComponent.builder()
                 .mainComponent(mainComponent)
@@ -71,6 +77,7 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
     private void initListener() {
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mMeiZiAdapter.setOnLoadMoreListener(this);
+        mMeiZiAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -82,14 +89,11 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
         mDatas = new ArrayList<>();
         final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        layoutManager.setOrientation(GridLayoutManager.VERTICAL);
         DividerDecoration decoration = new DividerDecoration(10);
         mRecyclerView.addItemDecoration(decoration);
         mRecyclerView.setLayoutManager(layoutManager);
         mMeiZiAdapter = new MeiZiAdapter(mDatas);
         mRecyclerView.setAdapter(mMeiZiAdapter);
-//        mMeiZiAdapter.disableLoadMoreIfNotFullPage();
     }
 
     @Override
@@ -170,4 +174,21 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
         }, 500);
     }
 
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        int viewPosition = mRecyclerView.getChildAdapterPosition(view);
+        BaseViewHolder viewHolder = (BaseViewHolder) mRecyclerView.findViewHolderForAdapterPosition(position);
+        ScaleImageView imageView = (ScaleImageView) viewHolder.getView(R.id.imageView);
+        MeiZi meiZi = mMeiZiAdapter.getData().get(viewPosition);
+        Intent intent = new Intent(getActivity(), MeiziDetailActivity.class);
+        intent.putExtra("data", meiZi);
+        ActivityOptionsCompat compat = ActivityOptionsCompat
+                .makeSceneTransitionAnimation(getActivity(), imageView, MeiziDetailActivity.TRANSIT_PIC);
+        try {
+            ActivityCompat.startActivity(getActivity(), intent, compat.toBundle());
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            startActivity(intent);
+        }
+    }
 }
