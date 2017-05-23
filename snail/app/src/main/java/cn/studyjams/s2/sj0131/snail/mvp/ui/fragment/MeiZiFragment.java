@@ -99,6 +99,8 @@ public class MeiZiFragment extends BaseFragment<MeiZiPresenter> implements MeiZi
     @Override
     public void inflateDatas(ArrayList<MeiZi> datas) {
         mMeiZiAdapter.setNewData(datas);
+        //不满一屏幕时候关闭加载更多
+        mMeiZiAdapter.disableLoadMoreIfNotFullPage(mRecyclerView);
     }
 
     @Override
