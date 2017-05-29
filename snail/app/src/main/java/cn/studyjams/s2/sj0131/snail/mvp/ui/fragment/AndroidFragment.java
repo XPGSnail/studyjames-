@@ -93,6 +93,7 @@ public class AndroidFragment extends BaseFragment<AndroidPresenter> implements A
     @Override
     public void inflateDatas(ArrayList<Android> datas) {
         mAdapter.setNewData(datas);
+        mAdapter.disableLoadMoreIfNotFullPage(mRecyclerView);
     }
 
     @Override
