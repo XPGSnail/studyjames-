@@ -4,6 +4,18 @@
 - 这边首先要感谢[代码家]()提供的开放api接口
 - 另外还要感谢[JessYan](https://github.com/JessYanCoding)于dagger2的在项目中应用的学习很大一部分都是学的大佬的[MvpArms](https://github.com/JessYanCoding/MVPArms)开源框架
 
+运行时截图
+
+![Alt text](./1.png)
+
+![Alt text](./2.png)
+
+![Alt text](./3.png)
+
+![Alt text](./4.png)
+
+![Alt text](./5.png)
+
 ##dagger2的应用
 先放一张[官网](https://google.github.io/dagger/)图
 
@@ -26,14 +38,4 @@ Fragment Component: 生命周期跟Fragment 一样的组件
 ##遇到的坑
 展示图片列表瀑布流时候,图片错乱以及闪烁问题,原因主要是因为在加载图片时候没有预设置大小，填充时候需要默认没有ImageView的宽高都是0
 
-运行时截图
 
-![Alt text](./1.png)
-
-![Alt text](./2.png)
-
-![Alt text](./3.png)
-
-![Alt text](./4.png)
-
-![Alt text](./5.png)
