@@ -1,4 +1,5 @@
 #妹news
+
 最近公司事情不多,加上最近学习dagger2总觉得要写点什么出来,于是乎就写了这么一个小应用
 - 这边首先要感谢[代码家]()提供的开放api接口
 - 另外还要感谢[JessYan](https://github.com/JessYanCoding)于dagger2的在项目中应用的学习很大一部分都是学的大佬的[MvpArms](https://github.com/JessYanCoding/MVPArms)开源框架
@@ -17,6 +18,7 @@ Activity Component: 生命周期跟Activity一样的组件
 Fragment Component: 生命周期跟Fragment 一样的组件
 
 关于dagger2学习的文章:
+
 [详解Dagger2](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0519/2892.html)
 
 [基于google-mvp-dagger2分支的讲解](http://www.jianshu.com/p/01d3c014b0b1)
@@ -26,4 +28,12 @@ Fragment Component: 生命周期跟Fragment 一样的组件
 
 运行时截图
 
+![Alt text](./1.png)
 
+![Alt text](./2.png)
+
+![Alt text](./3.png)
+
+![Alt text](./4.png)
+
+![Alt text](./5.png)
